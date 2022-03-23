@@ -43,3 +43,38 @@ greet('Hello')('Jake'); //Closure
 //Arrow Func variant
 const greet1 = greeting => name => console.log(`${greeting}, ${name}!`);
 greet1('Hello')('Mike');
+
+
+//Call and Apply Methods
+//133
+
+const airfrance = {
+    airline: 'AirFrance',
+    iataCode: 'AF',
+    bookings: [],
+    //book: function() {}
+    book(flightNum, passName) {
+        console.log(`${passName} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, passName })
+    }
+};
+
+airfrance.book(353, 'Jack Black')
+
+const klm = {
+    airline: 'KLM',
+    iataCode: 'KL',
+    bookings: []
+};
+
+const book = airfrance.book;
+//call method
+book.call(klm, 23, 'Paul Smith');
+console.log(klm);
+
+//apply
+const flightData = [657, 'Ann Smith'];
+book.apply(klm, flightData);
+//better
+book.call(klm, ...flightData);
