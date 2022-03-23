@@ -76,5 +76,5 @@ console.log(klm);
 //apply
 const flightData = [657, 'Ann Smith'];
 book.apply(klm, flightData);
-//better
+//better way
 book.call(klm, ...flightData);
