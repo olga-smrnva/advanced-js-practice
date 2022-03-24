@@ -5,23 +5,23 @@
 //Callbacks
 
 const oneWord = function(str) {
-    return str.replace(/ /g, '').toLowerCase();
+	return str.replace(/ /g, '').toLowerCase();
 };
 
 const upperFirstWord = function(str) {
-    const [first, ...others] = str.split(' ');
-    return [first.toUpperCase(), ...others].join(' ');
+	const [first, ...others] = str.split(' ');
+	return [first.toUpperCase(), ...others].join(' ');
 };
 
 const transformer = function(str, fn) {
-    console.log(`Result: ${fn(str)}`);
+	console.log(`Result: ${fn(str)}`);
 };
 
 transformer('JavaScript is the best!', upperFirstWord);
 transformer('JavaScript is the best!', oneWord);
 
 const high5 = function() {
-    console.log('✋🏼');
+	console.log('✋🏼');
 };
 document.body.addEventListener('click', high5);
 
@@ -29,9 +29,9 @@ document.body.addEventListener('click', high5);
 //Func returns a Func
 
 const greet = function(greeting) {
-    return function(name) {
-        console.log(`${greeting}, ${name}!`);
-    };
+	return function(name) {
+		console.log(`${greeting}, ${name}!`);
+	};
 };
 
 const greeterHey = greet('Hey');
@@ -49,23 +49,23 @@ greet1('Hello')('Mike');
 //133
 
 const airfrance = {
-    airline: 'AirFrance',
-    iataCode: 'AF',
-    bookings: [],
-    //book: function() {}
-    book(flightNum, passName) {
-        console.log(`${passName} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+	airline: 'AirFrance',
+	iataCode: 'AF',
+	bookings: [],
+	//book: function() {}
+	book(flightNum, passName) {
+		console.log(`${passName} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
 
-        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, passName })
-    }
+		this.bookings.push({ flight: `${this.iataCode}${flightNum}`, passName })
+	}
 };
 
 airfrance.book(353, 'Jack Black')
 
 const klm = {
-    airline: 'KLM',
-    iataCode: 'KL',
-    bookings: []
+	airline: 'KLM',
+	iataCode: 'KL',
+	bookings: []
 };
 
 const book = airfrance.book;
@@ -92,12 +92,31 @@ bookKlm567('Mag Smith');
 //136
 
 const runOnce = function () {
-    console.log('This runs only ones');
+	console.log('This runs only ones');
 };
 runOnce();
 
 (function () {
-    console.log('Hey');
+	console.log('Hey');
 })();
 
 (() => console.log('Hey you'))();  
+
+//Closures
+
+const secureBooking = function() {
+	let passengerCount = 0;
+
+	return function() {
+		passengerCount++;
+		console.log(`${passengerCount} passengers`);
+	};
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
