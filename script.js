@@ -78,3 +78,12 @@ const flightData = [657, 'Ann Smith'];
 book.apply(klm, flightData);
 //better way
 book.call(klm, ...flightData);
+
+//Bind method 
+//134
+
+const bookKlm = book.bind(klm);
+bookKlm(354, 'John Smith');
+
+const bookKlm567 = book.bind(klm, 567);
+bookKlm567('Mag Smith');
