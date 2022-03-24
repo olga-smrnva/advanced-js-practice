@@ -87,3 +87,17 @@ bookKlm(354, 'John Smith');
 
 const bookKlm567 = book.bind(klm, 567);
 bookKlm567('Mag Smith');
+
+//IIFE
+//136
+
+const runOnce = function () {
+    console.log('This runs only ones');
+};
+runOnce();
+
+(function () {
+    console.log('Hey');
+})();
+
+(() => console.log('Hey you'))();  
