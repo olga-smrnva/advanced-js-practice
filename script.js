@@ -119,4 +119,47 @@ booker();
 booker();
 booker();
 
+//displays an interactive list of the properties of the specified JavaScript object
 console.dir(booker);
+
+//More closures
+
+//Ex1
+let f;
+const g = function() {
+	const a = 23;
+	f = function() {
+		console.log(a * 2);
+	};
+};
+
+const h = function() {
+	const b = 56;
+	f = function() {
+		console.log(b * 2);
+	};
+};
+
+g();
+f();
+console.dir(f);
+
+h();
+f();
+console.dir(f); //reassigned
+
+//Ex2
+const boardPassengers = function(n, wait) {
+	const perGroup = n / 3;
+
+	setTimeout(function() {
+		console.log(`We're now boarding all ${n} passengers`);
+		console.log(`There're 3 groups, each of ${perGroup} passengers`);
+	}, wait * 1000);
+
+	console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000;
+//closure has priority over the scope chain.
+boardPassengers(180, 3); //There're 3 groups, each of 60 passengers
